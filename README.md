@@ -10,13 +10,16 @@ lien vers le papier : http://www.cs.utexas.edu/~inderjit/public_papers/neo_kmean
 
 quelques exemples :
 
-![Ground truth 2 clusters](https://ibb.co/5xqGCYm)
-![Output Neokmeans alpha(0.5) beta(0.2)](https://ibb.co/1rmhjkv)
+![Ground truth 2 clusters](https://user-images.githubusercontent.com/31772947/79688471-d6bd1f80-824e-11ea-9b24-df488938ed4c.png)
+
+
+![Output Neokmeans alpha(0.5) beta(0.2)](https://user-images.githubusercontent.com/31772947/79688468-cf961180-824e-11ea-96b4-750393f1beea.png)
 
 et
 
-![Ground truth 3 clusters](https://ibb.co/txLg8vD)
-![Output Neokmeans alpha(0.15) beta(0.2)](https://ibb.co/YWZjqHF)
+![Ground truth 3 clusters](https://user-images.githubusercontent.com/31772947/79688477-df155a80-824e-11ea-9429-c0ae8169b3d7.png)
+
+![Output Neokmeans alpha(0.15) beta(0.2)](https://user-images.githubusercontent.com/31772947/79688476-dcb30080-824e-11ea-8bd9-5d928506def6.png)
 
 
 
