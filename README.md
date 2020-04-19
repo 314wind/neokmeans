@@ -6,7 +6,20 @@ v0.4
 implementation of the neokmeans in python, libre à vous de l'améliorer, le reprendre etc etc
 
 lien vers le papier : http://www.cs.utexas.edu/~inderjit/public_papers/neo_kmeans_sdm15.pdf
- 
+
+
+quelques exemples :
+
+![Ground truth 2 clusters](https://ibb.co/5xqGCYm)
+![Output Neokmeans alpha(0.5) beta(0.2)](https://ibb.co/1rmhjkv)
+
+et
+
+![Ground truth 3 clusters](https://ibb.co/txLg8vD)
+![Output Neokmeans alpha(0.15) beta(0.2)](https://ibb.co/YWZjqHF)
+
+
+
 
 (18/04/20) update v0.2: La version n'est pas encore parfaite mais j'arrive a un resultat.
 C'est une version probabiliste qui cherche les coef alpha et beta selon un critère (au moins 20 de population dans les clusters)
