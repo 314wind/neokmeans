@@ -1,7 +1,12 @@
 # Neokmeans
-implementation of the neokmeans in python, libre à vous de l'améliorer, le reprendre etc etc
 @author : gouth
 v0.4
+
+
+implementation of the neokmeans in python, libre à vous de l'améliorer, le reprendre etc etc
+
+lien vers le papier : http://www.cs.utexas.edu/~inderjit/public_papers/neo_kmeans_sdm15.pdf
+ 
 
 (18/04/20) update v0.2: La version n'est pas encore parfaite mais j'arrive a un resultat.
 C'est une version probabiliste qui cherche les coef alpha et beta selon un critère (au moins 20 de population dans les clusters)
