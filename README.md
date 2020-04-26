@@ -21,7 +21,8 @@ et
 
 ![Output Neokmeans alpha(0.15) beta(0.2)](https://user-images.githubusercontent.com/31772947/79688476-dcb30080-824e-11ea-8bd9-5d928506def6.png)
 
-#Explication
+# Explication
+
 Neo-k-means est un algorithme sortie dans un papier en 2015 par JJ Whang (http://www.cs.utexas.edu/~inderjit/public_papers/neo_kmeans_sdm15.pdf)
 Moralement cet algorithme est très similaire au célèbre K-means, sauf qu'il permet le recouvrement. C'est à dire, que les frontières entre les clusters ne sont plus strictes, mais "fuzzy" ou floue en français (https://en.wikipedia.org/wiki/Fuzzy_clustering).
 Un point peut maintenant appartenir à plusieurs clusters voir même aucuns.
@@ -34,7 +35,7 @@ L'astuce est d'utiliser une matrice U d'affectation, tel que : U[i,j]==1 ssi le 
 On peut definir l'intersection entre tous les clusters avec U[i,:] = 1 pour tout j.
 
 
-#Logs
+# Logs
 
 (26/04/20) update v0.5
 le calcul des centroïdes ne prennait pas en compte des points qui pouvaient ne pas exister dans une dimension, maintenant si.
@@ -68,7 +69,7 @@ Je vais améliorer au fur et a mesure afin qu'il soit parfait pour le dialogue a
 
 
 
-#Environnement
+# Environnement
 
 voici mon environnement python :
 
