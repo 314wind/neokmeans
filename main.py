@@ -7,6 +7,7 @@ from sklearn.cluster import KMeans as km
 import random
 import math
 
+CONSTANTE = -1 #valeur dans une dimension quand le point n'y a pas d'info/n'existe pas dans celle ci
 np.set_printoptions(threshold=sys.maxsize) #pour afficher les tableaux en entier sur la sortie standard
 """
 parse le fichier dans une matrice X 
@@ -28,24 +29,38 @@ X : data
 k : nb clusters
 U : indices 
 return the matrix M wich is the means of all centroid in data X
+
+COMPLEXITE n^(k*d) ==> todo optimiser
 """
 def centroids(X, U, k):
-	length = X.shape[1] #nb dimensions données
-	M = np.zeros((length, k))
+	global CONSTANTE
+	d = X.shape[1] #nb dimensions données
+	M = np.zeros((d, k))
 	for i in range (0,k):#parcours de tous les clusters
-		ind = np.argwhere(U[:,i]==1) #extrait les points qui appartiennt au cluster i
-		for j in range(0,length): #on somme colonne par colonne de la partie k
-			tc = X[ind,j].shape[0] #taille du cluster
-			sum_x = np.sum(X[ind, j])
-			print("i:",i)
-			print("j:",j)
-			print(M.shape)
-			print("=======")
-			M[j,i] = sum_x/tc  ##j'avais inversé les indices i et j ça donnait de la m****
+		ind = np.argwhere(U[:,i]==1) #extrait les indices des points qui appartiennt au cluster i
+		temp = X[ind] #on ne prend les points qui appartiennent au cluster i
+		for j in range (0, d) # on parcours toutes les dimensions
+			cpt=0 #compteur des valeurs prise en compte dans la dimensions
+			somme = 0
+			for u in range(0,temp.shape[0]): #on parcours tous les points temp a la dimension j
+				if(temp[u,j]!=CONSTANTE):
+					somme += temp[u,j]
+					cpt += 1
+			#endfor parcours des points temps à la dim j
+			#tc = X[ind,j].shape[0] #taille du cluster
+			#tc est remplacé par cpt, qui a compté les valeurs prise en compte 
+			
+			#sum_x = np.sum(X[ind, j])
+			#sum_x est remplacé par somme qui a sommé les bonnes valeurs et pas les CONSTANTES
+
+			M[j,i] = somme/cpt 
 
 
 
 	return M
+
+def angle(X, M, k):
+	pass
 
 """
 calcul la distance entre chaque point dans X et claque cluster 
