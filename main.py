@@ -41,12 +41,14 @@ def centroids(X, U, k):
 	M = np.zeros((d, k))
 	for i in range (0,k):#parcours de tous les clusters
 		ind = np.argwhere(U[:,i]==1) #extrait les indices des points qui appartiennt au cluster i
-		temp = X[ind] #on ne prend les points qui appartiennent au cluster i
-		for j in range (0, d) # on parcours toutes les dimensions
+		tem = X[ind] #on ne prend les points qui appartiennent au cluster i
+		temp = tem[:,0,:] #pcq argwhere me rajoute une dimension
+		
+		for j in range (0, d): # on parcours toutes les dimensions
 			cpt=0 #compteur des valeurs prise en compte dans la dimensions
 			somme = 0
 			for u in range(0,temp.shape[0]): #on parcours tous les points temp a la dimension j
-				if(temp[u,j]!=CONSTANTE):
+				if(temp[u,j].any()!=CONSTANTE):
 					somme += temp[u,j]
 					cpt += 1
 			#endfor parcours des points temps à la dim j
@@ -55,7 +57,6 @@ def centroids(X, U, k):
 			
 			#sum_x = np.sum(X[ind, j])
 			#sum_x est remplacé par somme qui a sommé les bonnes valeurs et pas les CONSTANTES
-
 			M[j,i] = somme/cpt 
 
 
@@ -88,7 +89,7 @@ beta : coef of points that couldn't be in one clique
 tmax : iteration max 
 initU : for indices in X
 
-RETURN : k cliques
+RETURN : U la matrice d'affectation
 """
 def neoKMeans(X, k, alpha, beta, tmax, initU):
 	#init
@@ -151,10 +152,8 @@ def neoKMeans(X, k, alpha, beta, tmax, initU):
 		sorted_n = dnk_sorted[:,1]
 		sorted_k = dnk_sorted[:,2]
 
-		
+		#permet de regarder a quel points les centroids se déplacent et arreter s'ils ne bougent plus
 		J= J+ np.sum(sorted_d[1:nb_assign])
-
-		#changer le type des deux dernieres colonnes en int 
 
 		#temp est une matrice qui facilite les accès par la suite
 		temp = np.zeros((nb_assign, nb_assign))
@@ -215,8 +214,10 @@ def display_cluster(X,U,k):
  	#todo automatiser l'affichage en fonction du nombre de cluster
 	c0 = X[np.argwhere(U[:,0]==1)]
 	c1 = X[np.argwhere(U[:,1]==1)]
-	if(k==3):
-			c2 = X[np.argwhere(U[:,2]==1)]
+	if(k>2):
+		c2 = X[np.argwhere(U[:,2]==1)]
+	if(k>3):
+		c3 = X[np.argwhereU[:,3]==1]
 
 	fig, ax = plt.subplots(length,length, sharex='col', sharey='row')
 	for i in range(0,length):
@@ -225,8 +226,11 @@ def display_cluster(X,U,k):
 			ax[i,j].set_ylim([-7,7])
 			ax[i,j].plot(c0[:,0,i], c0[:,0,j],'ro')
 			ax[i,j].plot(c1[:,0,i], c1[:,0,j],'bo')
-			if(k==3):
-					ax[i,j].plot(c2[:,0,i], c2[:,0,j],'mo')
+			if(k>2):
+				ax[i,j].plot(c2[:,0,i], c2[:,0,j],'mo')
+			if(k>3):
+				ax[i,j].plot(c3[:,0,i], c3[:,0,j],'yo')
+
 			ax[i,j].plot(intersection[:,i], intersection[:,j],'go')
 			ax[i,j].plot(extreme[:,i], extreme[:,j],'ko')
 	plt.show()
@@ -259,7 +263,7 @@ def get_extreme(X,U):
 
 #filename = input("nom du fichier (.csv) : ")
 #parser.parse(filename)
-X = parse("csv_gen/data_c3")
+X = parse("csv_gen/data")
 
 
 #parametres
@@ -281,7 +285,7 @@ for j in range (0, k):
 #initU va servir à récuperer les indices dans X
 
 
-alpha = 0.5
+#alpha = 0.01
 beta = 0.015
 
 U = neoKMeans(X, k, alpha, beta, tmax, initU)
