@@ -74,15 +74,23 @@ Je vais améliorer au fur et a mesure afin qu'il soit parfait pour le dialogue a
 voici mon environnement python :
 
 Package         Version
---------------- ------------
+------------   ------------
 -cikit-learn    0.22.2.post1
+
 kiwisolver      1.1.0
+
 matplotlib      3.2.0
+
 numpy           1.18.2
+
 pyparsing       2.4.6
+
 python-dateutil 2.8.1
+
 scikit-learn    0.22.2.post1
+
 scipy           1.4.1
+
 six             1.14.0
 
 
