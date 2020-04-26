@@ -29,7 +29,10 @@ X : data
 k : nb clusters
 U : indices 
 return the matrix M wich is the means of all centroid in data X
-
+On calcule maintenant les centroids avec les données qui ont de l'informations sur la dimension
+ex : un utilisateur n'a pas noté un film => il n'existe pas dans la dimension du film
+si on met un valeur de 0, ça jouera sur le centroid, idem si on mets une autre valeur
+donc je parse pour voir si l'user existe dans la dimension et le cas échant il influera le centroid
 COMPLEXITE n^(k*d) ==> todo optimiser
 """
 def centroids(X, U, k):
